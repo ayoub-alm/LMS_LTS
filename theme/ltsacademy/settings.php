@@ -294,7 +294,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_ltsacademy/geminiapikey';
     $title = get_string('geminiapikey', 'theme_ltsacademy');
     $description = get_string('geminiapikey_desc', 'theme_ltsacademy');
-    $setting = new admin_setting_configpasswordunmask($name, $title, $description, 'AIzaSyBfXmZpW-SGcBE43I9kHXfYIbuUbBbnN3Y');
+    $setting = new admin_setting_configpasswordunmask($name, $title, $description, 'AIzaSyAXy4ssZzYYa0iyKRxJwU64sIv4nMh-TMY');
     $page->add($setting);
 
     // AI Avatar upload.

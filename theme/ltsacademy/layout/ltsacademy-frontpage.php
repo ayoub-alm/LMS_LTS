@@ -180,7 +180,7 @@ $footercopyright = !empty($settings->footercopyright) ? format_string($settings-
 
 // ─── AI Chatbot ───────────────────────────────────────────────────────────────
 $showchatbot   = isset($settings->showchatbot) ? (bool) $settings->showchatbot : true;
-$geminiapikey  = !empty($settings->geminiapikey) ? $settings->geminiapikey : 'AIzaSyBfXmZpW-SGcBE43I9kHXfYIbuUbBbnN3Y';
+$geminiapikey  = !empty($settings->geminiapikey) ? $settings->geminiapikey : 'AIzaSyAXy4ssZzYYa0iyKRxJwU64sIv4nMh-TMY';
 $aiavatarimageurl = ltsacademy_get_file_url($themeconfig, 'aiavatar');
 
 // ─── Navigation / Drawers (inherited from Boost) ──────────────────────────────
