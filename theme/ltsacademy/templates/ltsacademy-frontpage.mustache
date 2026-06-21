@@ -199,6 +199,16 @@
     </section>
 
     <!-- ════════════════════════════════════════════════════
+         MOODLE MAIN CONTENT AREA (required)
+         Renders Moodle page content and blocks for this page.
+    ════════════════════════════════════════════════════ -->
+    <div id="region-main-box" class="lts-moodle-content-region">
+        <div id="region-main" class="container" aria-label="{{#str}}content{{/str}}">
+            {{{ main_content }}}
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
          INTRODUCTION SECTION
     ════════════════════════════════════════════════════ -->
     <section class="lts-section lts-bg-light">

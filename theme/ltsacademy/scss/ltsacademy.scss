@@ -93,6 +93,23 @@ $lts-dark:          #0f172a;
   }
 }
 
+// Moodle required main content region — hide when empty on the custom frontpage.
+.lts-moodle-content-region {
+  #region-main:empty,
+  #region-main > .no-overflow:empty {
+    display: none;
+  }
+
+  // Style any Moodle blocks/content that does appear here.
+  .block {
+    margin-bottom: 24px;
+    border-radius: 16px;
+    border: 1px solid $lts-border;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+}
+
 // ─── Buttons ─────────────────────────────────────────────────────────────────
 .lts-btn {
   display: inline-flex;

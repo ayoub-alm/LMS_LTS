@@ -228,6 +228,9 @@ $templatecontext = [
     'hascourses'              => $hascourses,
     'coursesviewallurl'       => $coursesviewallurl,
 
+    // Moodle main content area (required by Moodle — renders blocks & page content).
+    'main_content'            => $OUTPUT->main_content(),
+
     // Contact.
     'showcontactform'         => $showcontactform,
     'contacturl'              => $contacturl,
