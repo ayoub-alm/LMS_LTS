@@ -1735,3 +1735,160 @@ textarea.lts-form-control {
     right: 16px;
   }
 }
+
+// ─── Custom Navigation Bar ───────────────────────────────────────────────────
+.lts-navbar {
+  background: rgba($lts-dark, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba($lts-surface, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  transition: all 0.3s ease;
+
+  .lts-nav-brand {
+    display: flex;
+    align-items: center;
+    color: $lts-surface !important;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.5px;
+  }
+
+  .lts-nav-logo {
+    height: 38px;
+    width: auto;
+    border-radius: 6px;
+  }
+
+  .lts-nav-logo-fallback {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, $lts-primary, $lts-primary-light);
+    color: $lts-surface;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .lts-nav-brand-text {
+    font-size: 1.15rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lts-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .lts-nav-link {
+    color: #94a3b8 !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none !important;
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: $lts-surface !important;
+    }
+
+    &.lts-nav-link-highlight {
+      color: #3b82f6 !important;
+      font-weight: 600;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 6px 14px;
+      border-radius: 50px;
+      background: rgba(59, 130, 246, 0.05);
+
+      &:hover {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: rgba(59, 130, 246, 0.6);
+        color: #60a5fa !important;
+      }
+    }
+  }
+
+  .lts-nav-toggle {
+    background: transparent;
+    border: none;
+    color: $lts-surface;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Mobile navigation overlay menu
+.lts-mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba($lts-dark, 0.98);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba($lts-surface, 0.1);
+  padding: 16px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+
+  .lts-mobile-nav-link {
+    color: #94a3b8 !important;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba($lts-surface, 0.05);
+
+    &:hover {
+      color: $lts-surface !important;
+    }
+
+    &.lts-highlight {
+      color: #3b82f6 !important;
+    }
+  }
+
+  .lts-mobile-btn-login {
+    background: linear-gradient(135deg, $lts-primary 0%, $lts-primary-mid 100%);
+    color: $lts-surface !important;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none !important;
+  }
+}
+
+// ─── Value Card Animations and Hovers ─────────────────────────────────────────
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
+    border-color: $lts-primary-light !important;
+  }
+}
+
+.lts-value-item {
+  padding: 20px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+

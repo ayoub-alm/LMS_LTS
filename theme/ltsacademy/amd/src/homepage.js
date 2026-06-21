@@ -246,16 +246,38 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Aja
         });
     }
 
+    // ─── Mobile Navbar Collapse ────────────────────────────────────────────────
+    function initNavbarCollapse() {
+        var $toggle = $('#lts-mobile-nav-toggle');
+        var $menu = $('#lts-mobile-menu');
+        if (!$toggle.length || !$menu.length) { return; }
+
+        $toggle.on('click', function(e) {
+            e.stopPropagation();
+            $menu.slideToggle(250);
+        });
+
+        $(document).on('click', function() {
+            if ($menu.is(':visible')) {
+                $menu.slideUp(200);
+            }
+        });
+
+        $menu.on('click', 'a', function() {
+            $menu.slideUp(200);
+        });
+    }
+
     // ─── Init All ─────────────────────────────────────────────────────────────
     function init() {
-        // Wait for DOM ready
         $(function() {
             initScrollReveal();
             initContactForm();
             initLanguageCard();
             initSmoothScroll();
             initHeroParallax();
-            log.debug('LTS Academy homepage.js initialised');
+            initNavbarCollapse();
+            log.debug('LTS Academy homepage.js initialised with custom navbar toggle');
         });
     }
 
