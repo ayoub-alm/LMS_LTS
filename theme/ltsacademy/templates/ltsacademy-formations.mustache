@@ -1,0 +1,368 @@
+{{!
+    Template: ltsacademy-formations
+    Branded course catalog displaying all formations from LTS App.
+    @package    theme_ltsacademy
+    @copyright  2024 LTS Academy
+    @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+}}
+<!DOCTYPE html>
+<html {{{ output.htmlattributes }}}>
+<head>
+    <title>{{# output }}{{ page_title }}{{/ output }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{{ output.standard_head_html }}}
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body {{{ bodyattributes }}}>
+
+{{{ output.standard_top_of_body_html }}}
+
+{{> theme_boost/nav-drawer }}
+
+<div id="page-wrapper" class="d-print-block">
+
+    <!-- ════════════════════════════════════════════════════
+         CUSTOM LTS NAVBAR
+    ════════════════════════════════════════════════════ -->
+    <nav class="lts-navbar navbar-expand-lg" style="background: #0f172a !important; padding: 15px 0 !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; position: sticky !important; top: 0 !important; z-index: 1050 !important; width: 100% !important; display: block !important;">
+        <div class="container d-flex align-items-center justify-content-between" style="display: flex !important; align-items: center !important; justify-content: space-between !important; width: 100% !important;">
+            <a class="lts-nav-brand d-flex align-items-center text-decoration-none" href="{{{ wwwroot }}}" style="display: flex !important; align-items: center !important; color: #ffffff !important; font-weight: 800 !important; text-decoration: none !important;">
+                {{# haslogo }}
+                    <img src="{{{ logoimageurl }}}" alt="LTS Academy" class="lts-nav-logo" style="height: 38px !important; width: auto !important; border-radius: 6px !important;">
+                {{/ haslogo }}
+                {{^ haslogo }}
+                    <div class="lts-nav-logo-fallback" style="width: 38px !important; height: 38px !important; background: linear-gradient(135deg, #1e3a8a, #3b82f6) !important; color: #ffffff !important; display: flex !important; align-items: center !important; justify-content: center !important; font-weight: 900 !important; border-radius: 8px !important; margin-right: 8px !important;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                {{/ haslogo }}
+                <span class="lts-nav-brand-text" style="font-size: 1.15rem !important; font-weight: 800 !important; color: #ffffff !important;">LTS ACADEMY</span>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <div class="lts-nav-menu d-none d-lg-flex align-items-center" style="display: flex !important; align-items: center !important;">
+                <a href="{{{ wwwroot }}}#lts-hero" class="lts-nav-link" style="color: #94a3b8 !important; font-weight: 500 !important; font-size: 0.95rem !important; text-decoration: none !important; padding: 8px 16px !important; transition: color 0.25s ease !important;">Accueil</a>
+                <a href="{{{ wwwroot }}}/theme/ltsacademy/formations.php" class="lts-nav-link" style="color: #ffffff !important; font-weight: 500 !important; font-size: 0.95rem !important; text-decoration: none !important; padding: 8px 16px !important; transition: color 0.25s ease !important;">Formations</a>
+                <a href="{{{ wwwroot }}}#apropos" class="lts-nav-link" style="color: #94a3b8 !important; font-weight: 500 !important; font-size: 0.95rem !important; text-decoration: none !important; padding: 8px 16px !important; transition: color 0.25s ease !important;">À propos</a>
+                <a href="https://ltsacademyprive.com" target="_blank" rel="noopener noreferrer" class="lts-nav-link" style="color: #3b82f6 !important; font-weight: 600 !important; font-size: 0.95rem !important; text-decoration: none !important; padding: 6px 14px !important; border-radius: 50px !important; border: 1px solid rgba(59, 130, 246, 0.3) !important; background: rgba(59, 130, 246, 0.05) !important; margin-left: 10px !important; transition: all 0.25s ease !important;">Site Principal</a>
+                
+                {{# isloggedin }}
+                    <a href="{{{ dashboardurl }}}" class="lts-nav-link" style="color: #94a3b8 !important; font-weight: 500 !important; font-size: 0.95rem !important; text-decoration: none !important; padding: 8px 16px !important; transition: color 0.25s ease !important; margin-left: 10px !important;">Mon Espace</a>
+                    <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu" style="margin-left: 10px !important;">
+                        {{{ usermenu }}}
+                    </div>
+                {{/ isloggedin }}
+                {{^ isloggedin }}
+                    <a href="{{{ loginurl }}}" class="lts-btn lts-btn-primary lts-btn-sm text-white" style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%) !important; color: #ffffff !important; padding: 8px 20px !important; border-radius: 10px !important; font-weight: 600 !important; text-decoration: none !important; margin-left: 15px !important; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3) !important;">Connexion</a>
+                {{/ isloggedin }}
+            </div>
+
+            <!-- Mobile Toggle Menu Button -->
+            <button class="lts-nav-toggle d-lg-none" id="lts-mobile-nav-toggle" aria-label="Toggle Navigation" style="background: transparent !important; border: none !important; color: #ffffff !important; cursor: pointer !important; padding: 8px !important; display: flex !important; align-items: center !important; justify-content: center !important;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="lts-mobile-menu" id="lts-mobile-menu" style="display: none; position: absolute !important; top: 100% !important; left: 0 !important; right: 0 !important; background: #0f172a !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; padding: 15px 20px 20px !important; flex-direction: column !important; gap: 12px !important; box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important; z-index: 999 !important;">
+            <a href="{{{ wwwroot }}}#lts-hero" class="lts-mobile-nav-link" style="color: #94a3b8 !important; font-size: 1rem !important; font-weight: 600 !important; text-decoration: none !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; display: block !important;">Accueil</a>
+            <a href="{{{ wwwroot }}}/theme/ltsacademy/formations.php" class="lts-mobile-nav-link" style="color: #ffffff !important; font-size: 1rem !important; font-weight: 600 !important; text-decoration: none !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; display: block !important;">Formations</a>
+            <a href="{{{ wwwroot }}}#apropos" class="lts-mobile-nav-link" style="color: #94a3b8 !important; font-size: 1rem !important; font-weight: 600 !important; text-decoration: none !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; display: block !important;">À propos</a>
+            <a href="https://ltsacademyprive.com" target="_blank" rel="noopener noreferrer" class="lts-mobile-nav-link" style="color: #3b82f6 !important; font-size: 1rem !important; font-weight: 600 !important; text-decoration: none !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; display: block !important;">Site Principal</a>
+            {{# isloggedin }}
+                <a href="{{{ dashboardurl }}}" class="lts-mobile-nav-link" style="color: #94a3b8 !important; font-size: 1rem !important; font-weight: 600 !important; text-decoration: none !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; display: block !important;">Mon Espace</a>
+                <a href="{{{ logouturl }}}" class="lts-mobile-nav-link" style="color: #94a3b8 !important; font-size: 1rem !important; font-weight: 600 !important; text-decoration: none !important; padding: 8px 0 !important; display: block !important;">Déconnexion</a>
+            {{/ isloggedin }}
+            {{^ isloggedin }}
+                <a href="{{{ loginurl }}}" class="lts-mobile-btn-login" style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%) !important; color: #ffffff !important; padding: 12px !important; border-radius: 10px !important; text-align: center !important; font-weight: 700 !important; text-decoration: none !important; display: block !important;">Connexion</a>
+            {{/ isloggedin }}
+        </div>
+    </nav>
+
+    <!-- ════════════════════════════════════════════════════
+         HERO SECTION (FORMATIONS CATALOG HEADER)
+    ════════════════════════════════════════════════════ -->
+    <header class="lts-hero-section" id="lts-hero" style="min-height: 40vh; padding: 60px 0 100px; display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div class="container">
+            <div class="lts-hero-badge mb-3">
+                <span class="lts-badge-pill">Catalogue Complet</span>
+            </div>
+            <h1 class="lts-hero-heading" style="font-size: 2.8rem; margin-bottom: 12px;">Nos Formations d'Excellence</h1>
+            <p class="lts-hero-subtext mx-auto" style="max-width: 650px; font-size: 1.1rem; margin-bottom: 0;">
+                Explorez nos programmes certifiants conçus pour répondre aux besoins réels du marché et propulser votre carrière.
+            </p>
+        </div>
+        
+        <div class="lts-particle lts-particle-1" aria-hidden="true"></div>
+        <div class="lts-particle-2" style="position: absolute; width: 220px; height: 220px; background: #f59e0b; bottom: -40px; right: -40px; opacity: 0.08; filter: blur(40px);" aria-hidden="true"></div>
+        
+        <div class="lts-wave-divider" aria-hidden="true">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#f8fafc"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- ════════════════════════════════════════════════════
+         CATALOG SECTION
+    ════════════════════════════════════════════════════ -->
+    <section class="lts-section lts-bg-light" style="padding-top: 40px;">
+        <div class="container">
+            <!-- Category Filters -->
+            <div class="text-center mb-5">
+                <div class="lts-filter-bar">
+                    <button type="button" class="btn active lts-filter-btn" data-filter="all">Tous</button>
+                    <button type="button" class="btn lts-filter-btn" data-filter="Technologie">Technologie</button>
+                    <button type="button" class="btn lts-filter-btn" data-filter="Management">Management</button>
+                    <button type="button" class="btn lts-filter-btn" data-filter="Industrie">Industrie</button>
+                    <button type="button" class="btn lts-filter-btn" data-filter="Santé">Santé</button>
+                </div>
+            </div>
+
+            <!-- Formations Grid -->
+            <div class="row g-4 lts-formations-grid">
+                {{# formations }}
+                <div class="col-md-6 col-lg-4 lts-formation-col lts-reveal lts-visible" data-category="{{{ category }}}">
+                    <article class="lts-course-card">
+                        <div class="lts-course-img-wrap">
+                            <img src="{{{ imageurl }}}" alt="{{{ title }}}" class="lts-course-img">
+                            <span class="lts-course-badge">
+                                {{{ category }}}
+                            </span>
+                        </div>
+                        <div class="lts-course-body">
+                            <h3 class="lts-course-title">{{{ title }}}</h3>
+                            <p class="lts-course-subtitle text-muted">{{{ subtitle }}}</p>
+                            <p class="lts-course-summary">{{{ summary }}}</p>
+                            
+                            <div class="lts-course-footer-catalog">
+                                <div class="lts-certifiant-badge">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    <span>Certifiant</span>
+                                </div>
+                                <a href="https://wa.me/212661732848?text=Bonjour%2C%20je%20souhaite%20plus%20d'informations%20sur%20la%20formation%20{{{ title }}}" target="_blank" rel="noopener noreferrer" class="lts-course-link">
+                                    S'INSCRIRE
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                {{/ formations }}
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         FOOTER
+    ════════════════════════════════════════════════════ -->
+    <footer class="lts-footer">
+        <div class="container">
+            <div class="row gy-5">
+                <!-- Brand Column -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="lts-footer-brand">
+                        {{# haslogo }}
+                        <img src="{{{ logoimageurl }}}" alt="LTS Academy" class="lts-footer-logo">
+                        {{/ haslogo }}
+                        {{^ haslogo }}
+                        <div class="lts-footer-logo-text">
+                            <span class="lts-footer-logo-lts">LTS</span>
+                            <span class="lts-footer-logo-academy">ACADEMY</span>
+                        </div>
+                        {{/ haslogo }}
+                        <p class="lts-footer-tagline">{{{ footertagline }}}</p>
+                        <div class="lts-footer-socials">
+                            <a href="{{{ footerfacebook }}}" class="lts-social-btn" aria-label="Facebook" id="footer-facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                            </a>
+                            <a href="{{{ footerlinkedin }}}" class="lts-social-btn" aria-label="LinkedIn" id="footer-linkedin">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                            <a href="{{{ footertwitter }}}" class="lts-social-btn" aria-label="Twitter" id="footer-twitter">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4l11.733 16H20L8.267 4zm0 16l6.439-6.439M20 4l-6.439 6.439"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Column -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="lts-footer-heading">Navigation</h5>
+                    <ul class="lts-footer-links">
+                        <li><a href="{{{ wwwroot }}}#lts-hero" class="lts-footer-link" id="footer-home">Accueil</a></li>
+                        <li><a href="{{{ wwwroot }}}/theme/ltsacademy/formations.php" class="lts-footer-link" id="footer-courses">Nos Formations</a></li>
+                        {{# isloggedin }}
+                        <li><a href="{{{ dashboardurl }}}" class="lts-footer-link" id="footer-dashboard">Mon Espace</a></li>
+                        <li><a href="{{{ logouturl }}}" class="lts-footer-link" id="footer-logout">Déconnexion</a></li>
+                        {{/ isloggedin }}
+                        {{^ isloggedin }}
+                        <li><a href="{{{ loginurl }}}" class="lts-footer-link" id="footer-login">Se connecter</a></li>
+                        {{/ isloggedin }}
+                        <li><a href="https://ltsacademyprive.com" target="_blank" rel="noopener noreferrer" class="lts-footer-link" id="footer-mainsite">Site Principal (ltsacademyprive.com)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="lts-footer-heading">Contact</h5>
+                    <ul class="lts-footer-contact-list">
+                        <li class="lts-footer-contact-item">
+                            <span class="lts-footer-contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </span>
+                            <span>{{{ footeraddress }}}</span>
+                        </li>
+                        <li class="lts-footer-contact-item">
+                            <span class="lts-footer-contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 4.87 2 2 0 0 1 3.59 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.22a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+                            </span>
+                            <span>{{{ footerphone }}}</span>
+                        </li>
+                        <li class="lts-footer-contact-item">
+                            <span class="lts-footer-contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </span>
+                            <span>{{{ footeremail }}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lts-footer-bottom">
+                <p>{{{ footercopyright }}}</p>
+                <p class="lts-footer-credit">
+                    Designed with <span class="lts-heart">♥</span> by
+                    <a href="https://www.linkedin.com/in/hajarnadioui/" target="_blank" rel="noopener" class="lts-footer-author">Hajar Nadioui</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ════════════════════════════════════════════════════
+         AI CHATBOT BUBBLE
+    ════════════════════════════════════════════════════ -->
+    {{# showchatbot }}
+    <div id="lts-chatbot-root"
+         data-apikey="{{{ geminiapikey }}}"
+         data-avatarurl="{{# hasaiavatar }}{{{ aiavatarimageurl }}}{{/ hasaiavatar }}"
+         aria-live="polite">
+
+        <!-- Toggle Button -->
+        <button class="lts-chat-toggle" id="lts-chat-toggle" aria-label="Ouvrir l'assistant IA" aria-expanded="false">
+            <div class="lts-chat-toggle-ring" aria-hidden="true"></div>
+            {{# hasaiavatar }}
+            <img src="{{{ aiavatarimageurl }}}" alt="AI" class="lts-chat-avatar-img" id="lts-toggle-avatar" width="54" height="54">
+            {{/ hasaiavatar }}
+            {{^ hasaiavatar }}
+            <div class="lts-chat-default-avatar" id="lts-toggle-avatar" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg>
+            </div>
+            {{/ hasaiavatar }}
+            <span class="lts-chat-badge" id="lts-chat-badge" aria-hidden="true"></span>
+        </button>
+
+        <!-- Chat Window -->
+        <div class="lts-chat-window" id="lts-chat-window" role="dialog" aria-label="Assistant IA LTS Academy" aria-modal="true">
+            <!-- Header -->
+            <div class="lts-chat-header">
+                <div class="lts-chat-header-left">
+                    <div class="lts-chat-header-avatar-wrap">
+                        {{# hasaiavatar }}
+                        <img src="{{{ aiavatarimageurl }}}" alt="AI" class="lts-chat-header-avatar" width="40" height="40">
+                        {{/ hasaiavatar }}
+                        {{^ hasaiavatar }}
+                        <div class="lts-chat-header-avatar lts-chat-header-avatar-default">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg>
+                        </div>
+                        {{/ hasaiavatar }}
+                        <span class="lts-chat-status-ring"></span>
+                    </div>
+                    <div class="lts-chat-header-info">
+                        <h4 class="lts-chat-name">Assistant LTS Academy</h4>
+                        <div class="lts-chat-status">
+                            <span class="lts-status-dot"></span>
+                            <span>En ligne · Propulsé par Gemini</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="lts-chat-minimize" id="lts-chat-minimize" aria-label="Réduire le chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+            </div>
+
+            <!-- Messages -->
+            <div class="lts-chat-messages" id="lts-chat-messages" role="log" aria-live="polite" aria-atomic="false">
+                <div class="lts-quick-questions" id="lts-quick-questions">
+                    <p class="lts-quick-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Questions fréquentes
+                    </p>
+                    <button class="lts-quick-btn" data-question="Quelles formations proposez-vous ?" id="quick-q1">Quelles formations proposez-vous ?</button>
+                    <button class="lts-quick-btn" data-question="Comment s'inscrire à une formation ?" id="quick-q2">Comment s'inscrire à une formation ?</button>
+                    <button class="lts-quick-btn" data-question="Quels sont les modes de formation disponibles ?" id="quick-q3">Modes de formation disponibles ?</button>
+                    <button class="lts-quick-btn" data-question="Comment obtenir un devis personnalisé ?" id="quick-q4">Obtenir un devis personnalisé ?</button>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="lts-chat-input-area">
+                <div class="lts-chat-input-wrap" id="lts-chat-input-wrap">
+                    <textarea id="lts-chat-input" placeholder="Posez votre question…" rows="1" aria-label="Message" maxlength="1000"></textarea>
+                    <button class="lts-chat-send" id="lts-chat-send" aria-label="Envoyer" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                    </button>
+                </div>
+                <p class="lts-chat-footer-note">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Vos données sont sécurisées
+                </p>
+            </div>
+        </div>
+    </div>
+    {{/ showchatbot }}
+
+</div><!-- /page-wrapper -->
+
+{{{ output.standard_end_of_body_html }}}
+
+<script>
+// Filter interaction code
+document.addEventListener('DOMContentLoaded', function() {
+    var filterButtons = document.querySelectorAll('.lts-filter-btn');
+    var courseCards = document.querySelectorAll('.lts-formation-col');
+    
+    filterButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            filterButtons.forEach(function(b) {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+            
+            var filterValue = btn.getAttribute('data-filter');
+            
+            courseCards.forEach(function(card) {
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+
+// Pass config variables to chatbot AMD
+window.ltsAcademyConfig = {
+    apiKey: '{{{ geminiapikey }}}',
+    contactUrl: '{{{ wwwroot }}}/theme/ltsacademy/contact.php',
+    sesskey: '{{{ sesskey }}}'
+};
+</script>
+
+</body>
+</html>

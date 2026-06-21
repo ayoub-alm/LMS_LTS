@@ -43,7 +43,7 @@ function ltsacademy_get_file_url($themeconfig, $filearea) {
 $heroheading  = !empty($settings->heroheading)  ? format_string($settings->heroheading)  : 'Développez vos compétences avec LTS ACADEMY';
 $herosubtext  = !empty($settings->herosubtext)  ? format_string($settings->herosubtext)  : 'La formation qui convient le mieux à vos besoins professionnels.';
 $herobtntext  = !empty($settings->herobtntext)  ? format_string($settings->herobtntext)  : 'Découvrir nos formations';
-$herobtnurl   = !empty($settings->herobtnurl)   ? $settings->herobtnurl  : '/course/index.php';
+$herobtnurl   = !empty($settings->herobtnurl)   ? $settings->herobtnurl  : (new moodle_url('/theme/ltsacademy/formations.php'))->out();
 $herobtn2text = !empty($settings->herobtn2text) ? format_string($settings->herobtn2text) : 'Se connecter';
 $herobtn2url  = !empty($settings->herobtn2url)  ? $settings->herobtn2url : '/login/index.php';
 $heroimageurl = ltsacademy_get_file_url($themeconfig, 'heroimage');
@@ -116,7 +116,7 @@ if (empty($courses)) {
             'summary'     => 'Gérez le capital humain et développez les talents (recrutement, paie, relations sociales...).',
             'imageurl'    => 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80',
             'hasimage'    => true,
-            'courseurl'   => '#formations',
+            'courseurl'   => (new moodle_url('/theme/ltsacademy/formations.php'))->out(),
         ],
         [
             'id'          => 'marketing',
@@ -124,7 +124,7 @@ if (empty($courses)) {
             'summary'     => 'Devenez un expert en stratégie digitale (webmarketing, SEO, community management, réseaux sociaux...).',
             'imageurl'    => 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
             'hasimage'    => true,
-            'courseurl'   => '#formations',
+            'courseurl'   => (new moodle_url('/theme/ltsacademy/formations.php'))->out(),
         ],
         [
             'id'          => 'mecanique',
@@ -132,7 +132,7 @@ if (empty($courses)) {
             'summary'     => 'Concevez et maintenez les systèmes mécaniques de demain (modélisation 3D, SolidWorks, AutoCAD...).',
             'imageurl'    => 'https://ft.univ-tlemcen.dz/assets/uploads/_Images/D%C3%A9partements/mechanic_unsa_arequipa_peru_02-878x426.jpg',
             'hasimage'    => true,
-            'courseurl'   => '#formations',
+            'courseurl'   => (new moodle_url('/theme/ltsacademy/formations.php'))->out(),
         ],
         [
             'id'          => 'design',
@@ -140,7 +140,7 @@ if (empty($courses)) {
             'summary'     => 'Exprimez votre créativité à travers le design graphique (suite Adobe Photoshop, Illustrator, InDesign...).',
             'imageurl'    => 'https://images.unsplash.com/photo-1626785774573-4b799312c95d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
             'hasimage'    => true,
-            'courseurl'   => '#formations',
+            'courseurl'   => (new moodle_url('/theme/ltsacademy/formations.php'))->out(),
         ],
         [
             'id'          => 'paramedical',
@@ -148,7 +148,7 @@ if (empty($courses)) {
             'summary'     => 'Devenez un professionnel de santé compétent et qualifié (aide-soignant, infirmier auxiliaire...).',
             'imageurl'    => 'https://lafactory.ma/wp-content/uploads/2020/05/Paramedical-1024x768.jpeg',
             'hasimage'    => true,
-            'courseurl'   => '#formations',
+            'courseurl'   => (new moodle_url('/theme/ltsacademy/formations.php'))->out(),
         ],
         [
             'id'          => 'finance',
@@ -156,13 +156,13 @@ if (empty($courses)) {
             'summary'     => 'Maîtrisez les chiffres clés de l\'entreprise (comptabilité générale, analytique, gestion financière...).',
             'imageurl'    => 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
             'hasimage'    => true,
-            'courseurl'   => '#formations',
+            'courseurl'   => (new moodle_url('/theme/ltsacademy/formations.php'))->out(),
         ],
     ];
 }
 
 $hascourses         = !empty($courses);
-$coursesviewallurl  = !empty($settings->coursesviewallurl) ? $settings->coursesviewallurl : '/course/index.php';
+$coursesviewallurl  = !empty($settings->coursesviewallurl) ? $settings->coursesviewallurl : (new moodle_url('/theme/ltsacademy/formations.php'))->out();
 
 // ─── Contact Section ──────────────────────────────────────────────────────────
 $showcontactform = isset($settings->showcontactform) ? (bool) $settings->showcontactform : true;

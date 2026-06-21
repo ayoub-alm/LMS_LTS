@@ -68,6 +68,11 @@ $THEME->layouts = [
         'defaultregion' => 'side-pre',
         'options' => ['nonavbar' => false],
     ],
+    // The formations page - uses custom full-screen template layout.
+    'formations' => [
+        'file' => 'ltsacademy-formations.php',
+        'regions' => [],
+    ],
     'admin' => [
         'file' => 'drawers.php',
         'regions' => ['side-pre'],

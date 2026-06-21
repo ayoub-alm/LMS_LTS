@@ -1892,3 +1892,88 @@ textarea.lts-form-control {
   }
 }
 
+// ─── Custom Formations Catalog Page Styling ────────────────────────────────────
+.lts-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.lts-filter-btn {
+  border-radius: 30px !important;
+  font-weight: 600 !important;
+  padding: 10px 24px !important;
+  border: 1px solid $lts-border !important;
+  background: $lts-surface !important;
+  color: $lts-text-muted !important;
+  transition: all 0.25s ease-in-out !important;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+
+  &:hover {
+    background: rgba($lts-primary, 0.04) !important;
+    border-color: rgba($lts-primary, 0.3) !important;
+    color: $lts-primary !important;
+    transform: translateY(-2px);
+  }
+
+  &.active {
+    border-color: $lts-primary !important;
+    background: linear-gradient(135deg, $lts-primary 0%, $lts-primary-mid 100%) !important;
+    color: $lts-surface !important;
+    box-shadow: 0 6px 16px rgba($lts-primary, 0.2) !important;
+  }
+}
+
+.lts-formations-grid {
+  margin-top: 20px;
+}
+
+.lts-formation-col {
+  margin-bottom: 30px;
+  transition: all 0.4s ease;
+}
+
+.lts-course-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba($lts-dark, 0.85);
+  color: $lts-surface;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+
+.lts-course-subtitle {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: $lts-text-muted;
+  margin-bottom: 12px;
+}
+
+.lts-course-footer-catalog {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid $lts-border;
+}
+
+.lts-certifiant-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: $lts-green;
+  font-weight: 600;
+}
+
+
