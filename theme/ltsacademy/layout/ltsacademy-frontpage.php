@@ -107,6 +107,60 @@ foreach ($allcourses as $course) {
     $coursecount++;
 }
 
+if (empty($courses)) {
+    // Populate with 6 premium fallback courses from the Angular web app.
+    $courses = [
+        [
+            'id'          => 'rh',
+            'title'       => 'Ressources Humaines',
+            'summary'     => 'Gérez le capital humain et développez les talents (recrutement, paie, relations sociales...).',
+            'imageurl'    => 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80',
+            'hasimage'    => true,
+            'courseurl'   => '#formations',
+        ],
+        [
+            'id'          => 'marketing',
+            'title'       => 'Marketing Digital',
+            'summary'     => 'Devenez un expert en stratégie digitale (webmarketing, SEO, community management, réseaux sociaux...).',
+            'imageurl'    => 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+            'hasimage'    => true,
+            'courseurl'   => '#formations',
+        ],
+        [
+            'id'          => 'mecanique',
+            'title'       => 'Génie Mécanique',
+            'summary'     => 'Concevez et maintenez les systèmes mécaniques de demain (modélisation 3D, SolidWorks, AutoCAD...).',
+            'imageurl'    => 'https://ft.univ-tlemcen.dz/assets/uploads/_Images/D%C3%A9partements/mechanic_unsa_arequipa_peru_02-878x426.jpg',
+            'hasimage'    => true,
+            'courseurl'   => '#formations',
+        ],
+        [
+            'id'          => 'design',
+            'title'       => 'Infographie et Design',
+            'summary'     => 'Exprimez votre créativité à travers le design graphique (suite Adobe Photoshop, Illustrator, InDesign...).',
+            'imageurl'    => 'https://images.unsplash.com/photo-1626785774573-4b799312c95d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+            'hasimage'    => true,
+            'courseurl'   => '#formations',
+        ],
+        [
+            'id'          => 'paramedical',
+            'title'       => 'Formation Paramédicale',
+            'summary'     => 'Devenez un professionnel de santé compétent et qualifié (aide-soignant, infirmier auxiliaire...).',
+            'imageurl'    => 'https://lafactory.ma/wp-content/uploads/2020/05/Paramedical-1024x768.jpeg',
+            'hasimage'    => true,
+            'courseurl'   => '#formations',
+        ],
+        [
+            'id'          => 'finance',
+            'title'       => 'Comptabilité et Finance',
+            'summary'     => 'Maîtrisez les chiffres clés de l\'entreprise (comptabilité générale, analytique, gestion financière...).',
+            'imageurl'    => 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+            'hasimage'    => true,
+            'courseurl'   => '#formations',
+        ],
+    ];
+}
+
 $hascourses         = !empty($courses);
 $coursesviewallurl  = !empty($settings->coursesviewallurl) ? $settings->coursesviewallurl : '/course/index.php';
 
