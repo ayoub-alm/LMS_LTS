@@ -30,7 +30,7 @@ $PAGE->set_url(new moodle_url('/theme/ltsacademy/formations.php'));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Nos Formations - LTS Academy');
 $PAGE->set_heading('Nos Formations');
-$PAGE->set_layout('formations');
+$PAGE->set_pagelayout('formations');
 
 echo $OUTPUT->header();
 

@@ -165,11 +165,18 @@ $primary     = new core\navigation\output\primary($PAGE);
 $renderer    = $PAGE->get_renderer('core');
 $primarymenu = $primary->export_for_template($renderer);
 
+$extraclasses = ['uses-drawers', 'ltsacademy-frontpage'];
+$bodyattributes = $OUTPUT->body_attributes($extraclasses);
+
 $templatecontext = [
     'sitename'                => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), 'escape' => false]),
     'output'                  => $OUTPUT,
+    'bodyattributes'          => $bodyattributes,
     'logoimageurl'            => $logoimageurl,
     'haslogo'                 => !empty($logoimageurl),
+    'primarymoremenu'         => $primarymenu['moremenu'],
+    'secondarymoremenu'       => false,
+    'mobileprimarynav'        => $primarymenu['mobileprimarynav'],
     'usermenu'                => $primarymenu['user'],
     'langmenu'                => $primarymenu['lang'],
     'isloggedin'              => isloggedin(),
