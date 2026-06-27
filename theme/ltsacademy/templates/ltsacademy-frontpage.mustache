@@ -438,18 +438,32 @@
                             <span class="lts-lang-header-title ms-3">Détection de Niveau</span>
                         </div>
                         <div class="lts-lang-body">
-                            <p class="lts-lang-prompt" id="lts-lang-prompt">Choisissez votre langue :</p>
+                            <div class="lts-lang-kicker">Test IA · 10 questions · résultat instantané</div>
+                            <p class="lts-lang-prompt" id="lts-lang-prompt">Choisissez la langue à évaluer :</p>
                             <div class="lts-lang-options" id="lts-lang-options">
                                 <button class="lts-lang-btn" data-lang="Français" id="lts-lang-fr">🇫🇷 Français</button>
                                 <button class="lts-lang-btn" data-lang="English" id="lts-lang-en">🇬🇧 English</button>
                                 <button class="lts-lang-btn" data-lang="العربية" id="lts-lang-ar">🇲🇦 العربية</button>
                                 <button class="lts-lang-btn" data-lang="Español" id="lts-lang-es">🇪🇸 Español</button>
                             </div>
+                            <div class="lts-lang-test" id="lts-lang-test" style="display:none;">
+                                <div class="lts-lang-progress-meta">
+                                    <span id="lts-lang-step">Question 1/10</span>
+                                    <span id="lts-lang-selected"></span>
+                                </div>
+                                <div class="lts-lang-progress-wrap">
+                                    <div class="lts-lang-progress-bar" id="lts-lang-question-bar"></div>
+                                </div>
+                                <div class="lts-lang-question-card">
+                                    <p class="lts-lang-question" id="lts-lang-question"></p>
+                                    <div class="lts-lang-answers" id="lts-lang-answers"></div>
+                                </div>
+                            </div>
                             <div class="lts-lang-result" id="lts-lang-result" style="display:none;">
                                 <div class="lts-lang-progress-wrap">
                                     <div class="lts-lang-progress-bar" id="lts-lang-bar"></div>
                                 </div>
-                                <p class="lts-lang-result-text" id="lts-lang-result-text"></p>
+                                <div class="lts-lang-result-text" id="lts-lang-result-text"></div>
                                 <button class="lts-btn lts-btn-sm lts-btn-outline mt-2" id="lts-lang-reset">← Recommencer</button>
                             </div>
                         </div>

@@ -165,7 +165,7 @@ define(['jquery', 'core/log'], function($, log) {
 
     // ─── Gemini API call ──────────────────────────────────────────────────────
     function callGeminiAPI(userText) {
-        var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=' + apiKey;
+        var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' + apiKey;
 
         // Build contents array with system instruction prepended to first user turn.
         var contents = messages.map(function(msg) {

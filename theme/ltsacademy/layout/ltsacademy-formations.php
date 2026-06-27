@@ -158,7 +158,7 @@ $footertwitter  = !empty($settings->footertwitter)  ? $settings->footertwitter  
 $footercopyright = !empty($settings->footercopyright) ? format_string($settings->footercopyright) : '© 2025 LTS Academy. Tous droits réservés.';
 
 $showchatbot   = isset($settings->showchatbot) ? (bool) $settings->showchatbot : true;
-$geminiapikey  = !empty($settings->geminiapikey) ? $settings->geminiapikey : 'AIzaSyAXy4ssZzYYa0iyKRxJwU64sIv4nMh-TMY';
+$geminiapikey  = !empty($settings->geminiapikey) ? $settings->geminiapikey : 'AIzaSyBfXmZpW-SGcBE43I9kHXfYIbuUbBbnN3Y';
 $aiavatarimageurl = ltsacademy_form_get_file_url($themeconfig, 'aiavatar');
 
 $primary     = new core\navigation\output\primary($PAGE);
